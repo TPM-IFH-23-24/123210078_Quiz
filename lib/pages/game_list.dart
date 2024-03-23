@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:quiz_123210078/models/game_store.dart';
 import 'package:quiz_123210078/pages/game_details.dart';
 import 'package:quiz_123210078/pages/login.dart';
@@ -65,36 +66,37 @@ class GameList extends StatelessWidget {
   Widget _tourismListItem(BuildContext context, int index) {
     double width = MediaQuery.of(context).size.width;
 
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailPage(
-              game: gameList[index],
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(14)),
+          border: Border.all(color: const Color.fromARGB(32, 0, 0, 0))),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailPage(
+                game: gameList[index],
+              ),
             ),
-          ),
-        );
-      },
-      child: Container(
-        alignment: Alignment.bottomLeft,
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            border: Border.all(color: const Color.fromARGB(32, 0, 0, 0)),
-            image: DecorationImage(
-                image: NetworkImage(gameList[index].imageUrls[0]),
-                fit: BoxFit.cover)),
+          );
+        },
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(14)),
+                    image: DecorationImage(
+                        image: NetworkImage(gameList[index].imageUrls[0]),
+                        fit: BoxFit.cover)),
+              ),
+            ),
             Container(
               width: width,
-              padding: const EdgeInsets.all(14),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12))),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [

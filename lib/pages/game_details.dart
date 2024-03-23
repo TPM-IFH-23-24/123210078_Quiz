@@ -27,7 +27,9 @@ class _DetailPageState extends State<DetailPage> {
                   });
                 },
                 child: Icon(Icons.favorite,
-                    color: !isFav ? Color.fromARGB(48, 0, 0, 0) : Colors.red))
+                    color: !isFav
+                        ? const Color.fromARGB(48, 0, 0, 0)
+                        : Colors.red))
           ],
           title: Text(widget.game.name),
         ),
